@@ -1,5 +1,5 @@
 require('dotenv').config();
-const express = require('express'); // Thêm dòng này
+const express = require('express');
 const { Client, GatewayIntentBits, Events, REST, Routes, SlashCommandBuilder } = require('discord.js');
 
 const TOKEN = process.env.TOKEN;
@@ -47,14 +47,3 @@ client.on(Events.InteractionCreate, async interaction => {
 });
 
 client.login(TOKEN);
-const express = require('express');
-const app = express();
-
-app.get('/', (req, res) => {
-  res.send('Bot is running!');
-});
-
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`🌐 Web server is running on port ${PORT}`);
-});
