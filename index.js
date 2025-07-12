@@ -1,9 +1,20 @@
 require('dotenv').config();
-
+const express = require('express'); // Thêm dòng này
 const { Client, GatewayIntentBits, Events, REST, Routes, SlashCommandBuilder } = require('discord.js');
+
 const TOKEN = process.env.TOKEN;
 const CLIENT_ID = process.env.CLIENT_ID;
 const GUILD_ID = process.env.GUILD_ID;
+
+// Tạo server web đơn giản để giữ bot online (cho UptimeRobot ping)
+const app = express();
+app.get('/', (req, res) => {
+  res.send('Bot is alive!');
+});
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`🌐 Web server is running on port ${PORT}`);
+});
 
 // Tạo slash command: /ping
 const commands = [
